@@ -3,6 +3,7 @@ package com.piggyBankBE.rest;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -19,7 +20,7 @@ import com.piggyBankBE.service.CustomerService;
 //Root URL path for all end points within this controller.
 @RequestMapping("/customer")
 //Enables cross-domain communication with this controller
-
+@CrossOrigin
 //Marks this class as a REST controller
 @RestController
 public class CustomerController {
