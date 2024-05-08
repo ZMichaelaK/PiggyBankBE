@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.piggyBankBE.domain.Customer;
+import com.piggyBankBE.domain.Hint;
 import com.piggyBankBE.repo.CustomerRepo;
 
 
@@ -20,15 +21,22 @@ public class CustomerService {
 		super();
 		this.repo = repo;
 	}
+	
+	
+	public ResponseEntity<Customer> createCustomer(Customer newCustomer) {
+		Customer created = this.repo.save(newCustomer);
+		return new  ResponseEntity<Customer>(created, HttpStatus.CREATED);
+	}
+	
+	
 
 	public List<Customer> getCustomer() {
 		return this.repo.findAll();
 	}
 
-	public ResponseEntity<Customer> createCustomer(Customer newCustomer) {
-		Customer created = this.repo.save(newCustomer);
-		return new ResponseEntity<Customer>(created, HttpStatus.CREATED);
-	}
+
+
+	
 
 	public ResponseEntity<Customer> getCustomer(int id) {
 		Optional<Customer> found = this.repo.findById(id);
@@ -74,5 +82,7 @@ public class CustomerService {
 
 		return ResponseEntity.ok(updated);
 	}
+
+	
 
 }
