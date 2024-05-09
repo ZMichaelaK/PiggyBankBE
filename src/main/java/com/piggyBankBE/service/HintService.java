@@ -59,24 +59,24 @@ public class HintService {
 
 
 	public ResponseEntity<Hint> updateHint(int id, Hint newHint) {
-		Optional<Hint> found = this.repo.findById(id);
+	    Optional<Hint> found = this.repo.findById(id);
 
-		if (found.isEmpty()) {
+	    if (found.isEmpty()) {
+	        return new ResponseEntity<Hint>(HttpStatus.NOT_FOUND);
+	    }
 
-			return new ResponseEntity<Hint>(HttpStatus.NOT_FOUND);
-		}
-		
-		Hint body = found.get();
-		
-		if (newHint.getHintList() != null)
-			body.setHintList(newHint.getHintList());
-		
-		
-		Hint updated = this.repo.save(body);
+	    Hint body = found.get();
 
-		return ResponseEntity.ok(updated);
+	    if (newHint.getHintList() != null)
+	        body.setHintList(newHint.getHintList());
+
+	    if (newHint.getComment() != null)
+	        body.setComment(newHint.getComment());
+
+	    Hint updated = this.repo.save(body);
+
+	    return ResponseEntity.ok(updated);
 	}
-
 
 
 

@@ -13,6 +13,8 @@ public class Hint {
 	private Integer id;
 	
 	private String hintList;
+	
+	private String comment;
 
 	public Hint() {
 		super();
@@ -39,6 +41,14 @@ public class Hint {
 
 	public void setHintList(String hintList) {
 		this.hintList = hintList;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	
